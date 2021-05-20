@@ -1,31 +1,30 @@
 import React, { Component } from 'react';
 import ContactForm from '../components/ContactForm';
-//mport Filter from '../components/Filter';
-//import ContactList from '../components/ContactList';
-//import { connect } from 'react-redux';
-//import { contactsOperations } from './redux/contacts';
+import Filter from '../components/Filter';
+import ContactList from '../components/ContactList';
+import { connect } from 'react-redux';
+import { contactsOperations } from '../redux/contacts';
 
 import '../styles.scss';
 
 class ContactsPage extends Component {
-  //   componentDidMount() {
-  //     this.props.fetchContacts();
-  //   }
+  componentDidMount() {
+    this.props.fetchContacts();
+  }
   render() {
     return (
       <>
         <h1 className="title">Додати контакт: </h1>
         <ContactForm />
         <h2 className="title">Контакти</h2>
-        {/* <Filter />
-          <ContactList /> */}
+        <Filter />
+        <ContactList />
       </>
     );
   }
 }
-// const mapDispatchToProps = dispatch => ({
-//   fetchContacts: () => dispatch(contactsOperations.fetchContacts()),
-// });
+const mapDispatchToProps = dispatch => ({
+  fetchContacts: () => dispatch(contactsOperations.fetchContacts()),
+});
 
-export default ContactsPage;
-// connect(null, mapDispatchToProps)(App);
+export default connect(null, mapDispatchToProps)(ContactsPage);

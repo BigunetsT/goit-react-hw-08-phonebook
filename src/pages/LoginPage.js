@@ -1,5 +1,7 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
+import { connect } from 'react-redux';
+import { authOperations } from '../redux/auth';
 
 class LoginPage extends Component {
   static propTypes = {
@@ -20,9 +22,7 @@ class LoginPage extends Component {
 
   handleSubmit = e => {
     e.preventDefault();
-
-    this.props.onRegister(this.state);
-
+    this.props.onLogin(this.state);
     this.setState({ email: '', password: '' });
   };
 
@@ -32,7 +32,7 @@ class LoginPage extends Component {
     return (
       <div className="container">
         <h1 className="title">Сторінка входу</h1>
-        <form onSubmit={this.handleSubmit} className="form" autoComplete="off">
+        <form onSubmit={this.handleSubmit} className="form" autoComplete="on">
           <label className="label">
             Пошта
             <input
@@ -63,5 +63,8 @@ class LoginPage extends Component {
     );
   }
 }
+const mapDispatchToProps = {
+  onLogin: authOperations.logIn,
+};
 
-export default LoginPage;
+export default connect(null, mapDispatchToProps)(LoginPage);

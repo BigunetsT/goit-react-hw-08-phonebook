@@ -1,5 +1,7 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
+import { connect } from 'react-redux';
+import { authOperations } from '../redux/auth';
 import '../styles.scss';
 
 class RegisterPage extends Component {
@@ -23,9 +25,7 @@ class RegisterPage extends Component {
 
   handleSubmit = e => {
     e.preventDefault();
-
     this.props.onRegister(this.state);
-
     this.setState({ name: '', email: '', password: '' });
   };
 
@@ -77,5 +77,8 @@ class RegisterPage extends Component {
     );
   }
 }
+const mapDispatchToProps = {
+  onRegister: authOperations.register,
+};
 
-export default RegisterPage;
+export default connect(null, mapDispatchToProps)(RegisterPage);

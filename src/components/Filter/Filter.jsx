@@ -8,7 +8,7 @@ const Filter = ({ value, onChange }) => {
   return (
     <div className={styles.filter}>
       <label className={styles.label}>
-        Find contacts by name
+        Пошук контакта за ім'ям
         <input
           type="text"
           className={styles.input}
