@@ -1,0 +1,16 @@
+.email {
+  margin-right: 20px;
+}
+.btn {
+  border-radius: 5px;
+  padding: 3px 10px;
+  border: 1px solid var(--main-border-color);
+  cursor: pointer;
+  background-color: var(--second-color);
+  font-weight: bold;
+  transition: all 150ms ease-in-out;
+  &:hover {
+    box-shadow: 0 0 5px 0 var(--second-border-color) inset,
+      0 0 5px 4px var(--second-border-color);
+  }
+}

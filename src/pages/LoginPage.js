@@ -1,0 +1,67 @@
+import React, { Component } from 'react';
+import PropTypes from 'prop-types';
+
+class LoginPage extends Component {
+  static propTypes = {
+    state: PropTypes.shape({
+      email: PropTypes.string.isRequired,
+      password: PropTypes.string.isRequired,
+    }),
+    onSubmit: PropTypes.func,
+  };
+  state = {
+    email: '',
+    password: '',
+  };
+
+  handleChange = ({ target: { name, value } }) => {
+    this.setState({ [name]: value });
+  };
+
+  handleSubmit = e => {
+    e.preventDefault();
+
+    this.props.onRegister(this.state);
+
+    this.setState({ email: '', password: '' });
+  };
+
+  render() {
+    const { email, password } = this.state;
+
+    return (
+      <div className="container">
+        <h1 className="title">Сторінка входу</h1>
+        <form onSubmit={this.handleSubmit} className="form" autoComplete="off">
+          <label className="label">
+            Пошта
+            <input
+              className="input"
+              type="email"
+              name="email"
+              value={email}
+              onChange={this.handleChange}
+            />
+          </label>
+
+          <label className="label">
+            Пароль
+            <input
+              className="input"
+              type="password"
+              name="password"
+              value={password}
+              onChange={this.handleChange}
+            />
+          </label>
+
+          <button type="submit" className="btn">
+            Ввійти
+          </button>
+        </form>
+      </div>
+    );
+  }
+}
+
+export default LoginPage;

@@ -1,6 +1,7 @@
 @import '../../styles/shared.scss';
 
 .contactForm {
+  width: 300px;
   display: flex;
   flex-direction: column;
   border: 2px solid var(--main-color);
@@ -32,9 +33,9 @@
 }
 .addContactBtn {
   display: block;
-  width: 100px;
+  width: 150px;
   border-radius: 5px;
-  padding: 1px;
+  padding: 2px 5px;
   border: 1px solid var(--main-border-color);
   cursor: pointer;
   background-color: var(--second-color);

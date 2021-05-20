@@ -1,30 +1,41 @@
-import React, { Component } from 'react';
-import ContactForm from './components/ContactForm';
-import Filter from './components/Filter';
-import ContactList from './components/ContactList';
-import { connect } from 'react-redux';
-import { contactsOperations } from './redux/contacts';
+import React, { Component, lazy, Suspense } from 'react';
+import { Switch, Route, Redirect } from 'react-router-dom';
+import AppBar from './components/AppBar';
+import Container from './components/Container';
+import routes from './routes';
 
-import './styles.scss';
+const HomePage = lazy(() =>
+  import('./pages/HomePage' /* webpackChunkName: "home-page" */),
+);
+const ContactsPage = lazy(() =>
+  import('./pages/ContactsPage' /* webpackChunkName: "contacts-page" */),
+);
+const LoginPage = lazy(() =>
+  import('./pages/LoginPage' /* webpackChunkName: "login-page" */),
+);
+const RegisterPage = lazy(() =>
+  import('./pages/RegisterPage' /* webpackChunkName: "register-page" */),
+);
 
 class App extends Component {
-  componentDidMount() {
-    this.props.fetchContacts();
-  }
   render() {
     return (
-      <div className="container">
-        <h1 className="title">Phonebook</h1>
-        <ContactForm />
-        <h2 className="title">Contacts</h2>
-        <Filter />
-        <ContactList />
-      </div>
+      <>
+        <AppBar isAuthenticated={true} />
+        <Container>
+          <Suspense fallback={<h1>Загружаем...</h1>}>
+            <Switch>
+              <Route exact path={routes.home} component={HomePage} />
+              <Route path={routes.contacts} component={ContactsPage} />
+              <Route path={routes.login} component={LoginPage} />
+              <Route path={routes.register} component={RegisterPage} />
+              {/* <Redirect to={routes.home} /> */}
+            </Switch>
+          </Suspense>
+        </Container>
+      </>
     );
   }
 }
-const mapDispatchToProps = dispatch => ({
-  fetchContacts: () => dispatch(contactsOperations.fetchContacts()),
-});
 
-export default connect(null, mapDispatchToProps)(App);
+export default App;
