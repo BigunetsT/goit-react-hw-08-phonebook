@@ -10,6 +10,9 @@ import {
   fetchContactRequest,
   fetchContactError,
   fetchContactSuccess,
+  updateContactRequest,
+  updateContactSuccess,
+  updateContactError,
 } from './contacts-actions';
 axios.defaults.baseURL = 'https://connections-api.herokuapp.com';
 
@@ -43,4 +46,14 @@ const deleteContact = contactId => async dispatch => {
     dispatch(deleteContactError(error));
   }
 };
-export default { fetchContacts, addContact, deleteContact };
+//?????????????????
+const updateContact = (contactId, update) => async dispatch => {
+  dispatch(updateContactRequest());
+  try {
+    const { data } = await axios.patch(`/contacts/${contactId}`, update);
+    dispatch(updateContactSuccess(data));
+  } catch (error) {
+    dispatch(updateContactError(error));
+  }
+};
+export default { fetchContacts, addContact, deleteContact, updateContact };

@@ -4,6 +4,7 @@ import {
   addContactSuccess,
   deleteContactSuccess,
   changeFilter,
+  updateContactSuccess,
   fetchContactSuccess,
 } from './contacts-actions';
 
@@ -12,6 +13,7 @@ const itemsReducer = createReducer([], {
   [deleteContactSuccess]: (state, { payload }) =>
     state.filter(contact => contact.id !== payload),
   [fetchContactSuccess]: (_, { payload }) => payload,
+  [updateContactSuccess]: (state, { payload }) => [...state, ...payload], //???????
 });
 
 const filterReducer = createReducer('', {

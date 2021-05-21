@@ -25,6 +25,7 @@ body {
 
 .title {
   margin-bottom: 20px;
+  color: var(--active-color);
 }
 
 .header__link {
@@ -34,17 +35,32 @@ body {
   &:not(:last-child) {
     margin-right: 20px;
   }
+  &:hover {
+    color: var(--main-color);
+  }
 }
 .header__link-active {
   color: var(--active-color);
 }
-.container {
+.block {
   width: 400px;
   margin-left: auto;
   margin-right: auto;
 }
+.container-page {
+  padding-top: 15px;
+  & > .title {
+    text-align: center;
+  }
+}
 .form {
   width: 320px;
+}
+.contact-operations {
+  display: flex;
+  align-items: center;
+  width: 600px;
+  margin-bottom: 20px;
 }
 .label {
   display: flex;
@@ -66,7 +82,19 @@ body {
   }
 }
 .btn {
-  padding: 2px 5px;
-  font-weight: bold;
+  color: var(--second-color);
+  background-color: var(--active-color);
+  border-radius: 5px;
+  padding: 5px 10px;
+  border: 1px solid var(--main-border-color);
   cursor: pointer;
+  font-weight: bold;
+  transition: all 150ms ease-in-out;
+  &:hover {
+    box-shadow: 0 0 5px 0 var(--second-border-color) inset,
+      0 0 5px 4px var(--second-border-color);
+  }
+}
+.addBtn {
+  margin-right: 30px;
 }

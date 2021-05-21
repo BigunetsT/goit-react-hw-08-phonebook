@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { authOperations } from '../redux/auth';
+import '../styles.scss';
 
 class LoginPage extends Component {
   static propTypes = {
@@ -30,7 +31,7 @@ class LoginPage extends Component {
     const { email, password } = this.state;
 
     return (
-      <div className="container">
+      <div className="block">
         <h1 className="title">Сторінка входу</h1>
         <form onSubmit={this.handleSubmit} className="form" autoComplete="on">
           <label className="label">
