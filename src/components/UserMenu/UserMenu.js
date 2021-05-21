@@ -7,8 +7,8 @@ import { authSelectors, authOperations } from '../../redux/auth';
 const UserMenu = ({ email, onLogout }) => {
   return (
     <div>
-      <span class={styles.email}>{email}</span>
-      <button type="button" class={styles.btn} onClick={onLogout}>
+      <span className={styles.email}>{email}</span>
+      <button type="button" className={styles.btn} onClick={onLogout}>
         Вийти
       </button>
     </div>
@@ -19,7 +19,7 @@ const mapStateToProps = state => ({
 });
 
 UserMenu.propTypes = {
-  email: PropTypes.string.isRequired,
+  email: PropTypes.string,
   onLogout: PropTypes.func,
 };
 const mapDispatchToProps = {
