@@ -32,16 +32,16 @@
   border: 1px solid var(--main-border-color);
   border-radius: 5px;
   &:focus {
-    border: 3px solid var(--second-border-color);
-    box-shadow: 0 0 3px 0 var(--second-border-color) inset,
-      0 0 3px 3px var(--second-border-color);
+    border: 3px solid var(--active-color);
+    box-shadow: 0 0 2px 0 var(--active-color) inset,
+      0 0 2px 2px var(--active-color);
   }
 }
 .addContactBtn {
   display: block;
   width: 150px;
   border-radius: 5px;
-  padding: 2px 5px;
+  padding: 5px;
   border: 1px solid var(--main-border-color);
   cursor: pointer;
   color: var(--second-color);
@@ -49,8 +49,7 @@
   font-weight: bold;
   transition: all 150ms ease-in-out;
   &:hover {
-    //background-color: #94c0f9;
-    box-shadow: 0 0 5px 0 var(--second-border-color) inset,
-      0 0 5px 4px var(--second-border-color);
+    box-shadow: 0 0 5px 0 var(--active-color) inset,
+      0 0 5px 4px var(--active-color);
   }
 }

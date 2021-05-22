@@ -26,22 +26,24 @@ class ContactsPage extends Component {
     return (
       <div className="container-page">
         <h1 className="title">Контакти</h1>
-        <div className="contact-operations">
-          <Button
-            variant="secondary"
-            onClick={this.openModal}
-            className="addBtn"
-          >
-            Додати контакт
-          </Button>
-          {this.state.showModal && (
-            <Modal onClose={this.closeModal}>
-              <ContactForm />
-            </Modal>
-          )}
-          <Filter />
+        <div className="contacts">
+          <div className="contacts-operations">
+            <Button
+              variant="secondary"
+              onClick={this.openModal}
+              className="addBtn"
+            >
+              Додати контакт
+            </Button>
+            {this.state.showModal && (
+              <Modal onClose={this.closeModal}>
+                <ContactForm />
+              </Modal>
+            )}
+            <Filter />
+          </div>
+          <ContactList className="contacts-list" />
         </div>
-        <ContactList />
       </div>
     );
   }

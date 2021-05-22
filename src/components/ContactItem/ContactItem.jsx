@@ -5,21 +5,25 @@ import { contactsOperations } from '../../redux/contacts';
 
 const ContactItem = ({ id, name, number, onDelete, onUpdate }) => (
   <li name={name} number={number} className={styles.contactItem}>
-    {name}:<span className={styles.phoneNumber}>{number}</span>
-    <button
-      type="button"
-      className={styles.contactBtn}
-      onClick={() => onDelete(id)}
-    >
-      Видалити
-    </button>
-    <button
-      type="button"
-      className={styles.contactBtn}
-      onClick={() => onUpdate()}
-    >
-      Редагувати
-    </button>
+    <div className={styles.contactData}>
+      {name}:<span className={styles.phoneNumber}>{number}</span>
+    </div>
+    <div className={styles.contactOperations}>
+      <button
+        type="button"
+        className={styles.contactBtn}
+        onClick={() => onDelete(id)}
+      >
+        Видалити
+      </button>
+      <button
+        type="button"
+        className={styles.contactBtn}
+        onClick={() => onUpdate()}
+      >
+        Редагувати
+      </button>
+    </div>
   </li>
 );
 ContactItem.propTypes = {

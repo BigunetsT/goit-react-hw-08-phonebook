@@ -1,7 +1,7 @@
 .email {
   margin-right: 20px;
   font-weight: bold;
-  color: var(--second-border-color);
+  color: var(--active-color);
 }
 .btn {
   color: var(--second-color);
@@ -13,7 +13,7 @@
   font-weight: bold;
   transition: all 150ms ease-in-out;
   &:hover {
-    box-shadow: 0 0 5px 0 var(--second-border-color) inset,
-      0 0 5px 4px var(--second-border-color);
+    box-shadow: 0 0 5px 0 var(--active-color) inset,
+      0 0 5px 4px var(--active-color);
   }
 }

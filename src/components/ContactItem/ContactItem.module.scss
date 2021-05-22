@@ -2,12 +2,21 @@
 
 .phoneNumber {
   margin-left: 10px;
-  margin-right: 10px;
 }
 .contactItem {
+  min-width: 420px;
+  display: flex;
+  justify-content: space-between;
+  padding-top: 10px;
+  padding-bottom: 10px;
+  border-bottom: 1px dotted var(--main-border-color);
   &:not(:last-child) {
     margin-bottom: 10px;
   }
+}
+.contactData {
+}
+.contactOperations {
 }
 .contactBtn {
   position: relative;
@@ -19,15 +28,18 @@
   font-weight: bold;
   cursor: pointer;
   &:hover {
-    background-color: var(--second-border-color);
+    color: var(--active-color);
+  }
+  &:not(:last-child) {
+    margin-right: 10px;
   }
 }
-.contactDeleteBtn::after {
+.contactBtn::after {
   content: '';
   width: 30px;
   height: 30px;
   border-radius: 100%;
-  border: 3px solid var(--second-border-color);
+  border: 3px solid var(--active-color);
   position: absolute;
   z-index: -1;
   top: 50%;
@@ -36,8 +48,8 @@
   animation: none;
   display: none;
 }
-.contactDeleteBtn:hover::after,
-.contactDeleteBtn:focus::after {
+.contactBtn:hover::after,
+.contactBtn:focus::after {
   display: block;
   animation: ring 1.5s infinite;
 }

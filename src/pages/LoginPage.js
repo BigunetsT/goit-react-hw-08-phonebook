@@ -31,7 +31,7 @@ class LoginPage extends Component {
     const { email, password } = this.state;
 
     return (
-      <div className="block">
+      <div className="wrapper">
         <h1 className="title">Сторінка входу</h1>
         <form onSubmit={this.handleSubmit} className="form" autoComplete="on">
           <label className="label">

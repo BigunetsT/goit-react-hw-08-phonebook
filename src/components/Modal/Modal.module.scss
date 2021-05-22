@@ -1,6 +1,7 @@
 /*
  * Стили компонента Modal
  */
+@import '../../styles/shared.scss';
 
 .overlay {
   position: fixed;
@@ -26,9 +27,9 @@
   right: 10px;
   border: none;
   background-color: transparent;
-  color: black;
+  color: var(--main-color);
   font-weight: bold;
   &:hover {
-    color: #94c0f9;
+    color: var(--active-color);
   }
 }
