@@ -12,5 +12,8 @@ const getVisibleContacts = createSelector(
     );
   },
 );
+const getSortContacts = createSelector([getVisibleContacts], contacts => {
+  return contacts.sort((a, b) => (a.name > b.name ? 1 : -1));
+});
 
-export default { getFilter, getContacts, getVisibleContacts };
+export default { getFilter, getContacts, getVisibleContacts, getSortContacts };

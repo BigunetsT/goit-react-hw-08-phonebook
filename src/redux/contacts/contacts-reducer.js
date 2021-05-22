@@ -13,7 +13,12 @@ const itemsReducer = createReducer([], {
   [deleteContactSuccess]: (state, { payload }) =>
     state.filter(contact => contact.id !== payload),
   [fetchContactSuccess]: (_, { payload }) => payload,
-  [updateContactSuccess]: (state, { payload }) => [...state, ...payload], //???????
+  [updateContactSuccess]: (state, { payload }) =>
+    state.map(contact =>
+      contact.id === payload.id
+        ? { ...contact, name: payload.name, number: payload.number }
+        : contact,
+    ),
 });
 
 const filterReducer = createReducer('', {

@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import ContactForm from '../components/ContactForm';
+import AddContact from '../components/AddContact';
 import { Button } from 'react-bootstrap';
 import Modal from '../components/Modal';
 import Filter from '../components/Filter';
@@ -37,7 +37,7 @@ class ContactsPage extends Component {
             </Button>
             {this.state.showModal && (
               <Modal onClose={this.closeModal}>
-                <ContactForm />
+                <AddContact />
               </Modal>
             )}
             <Filter />

@@ -46,14 +46,18 @@ const deleteContact = contactId => async dispatch => {
     dispatch(deleteContactError(error));
   }
 };
-//?????????????????
-const updateContact = (contactId, update) => async dispatch => {
-  dispatch(updateContactRequest());
-  try {
-    const { data } = await axios.patch(`/contacts/${contactId}`, update);
-    dispatch(updateContactSuccess(data));
-  } catch (error) {
-    dispatch(updateContactError(error));
-  }
-};
+
+const updateContact =
+  ({ id, name, number }) =>
+  async dispatch => {
+    const update = { name, number };
+    dispatch(updateContactRequest());
+    try {
+      const { data } = await axios.patch(`/contacts/${id}`, update);
+      dispatch(updateContactSuccess(data));
+    } catch (error) {
+      dispatch(updateContactError(error));
+    }
+  };
+
 export default { fetchContacts, addContact, deleteContact, updateContact };

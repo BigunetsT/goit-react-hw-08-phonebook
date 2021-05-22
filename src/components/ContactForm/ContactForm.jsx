@@ -1,94 +1,51 @@
-import React, { Component } from 'react';
+import React from 'react';
 import PropTypes from 'prop-types';
 import styles from './ContactForm.module.scss';
-import { connect } from 'react-redux';
-import { contactsOperations } from '../../redux/contacts';
-import { contactsSelectors } from '../../redux/contacts';
 
-const INITIAL_STATE = {
-  name: '',
-  number: '',
+const ContactForm = ({ name, number, onSubmit, onChange, textBtn }) => {
+  return (
+    <form onSubmit={onSubmit} className={styles.contactForm}>
+      <h2 className={styles.title}>Дані контакту: </h2>
+      <label className={styles.label}>
+        Ім'я
+        <input
+          className={styles.input}
+          type="text"
+          name="name"
+          value={name}
+          placeholder="введіть ім'я"
+          pattern="^[a-zA-Zа-яА-Я]+(([' -][a-zA-Zа-яА-Я ])?[a-zA-Zа-яА-Я]*)*$"
+          title="Имя может состоять только из букв, апострофа, тире и пробелов. Например Adrian, Jacob Mercer, Charles de Batz de Castelmore d'Artagnan и т. п."
+          required
+          onChange={onChange}
+        />
+      </label>
+      <label className={styles.label}>
+        Номер телефону
+        <input
+          className={styles.input}
+          type="tel"
+          name="number"
+          placeholder="XXX-XX-XX"
+          value={number}
+          pattern="\+?\d{1,4}?[-.\s]?\(?\d{1,3}?\)?[-.\s]?\d{1,4}[-.\s]?\d{1,4}[-.\s]?\d{1,9}"
+          title="Номер телефона должен состоять цифр и может содержать пробелы, тире, круглые скобки и может начинаться с +"
+          required
+          onChange={onChange}
+        />
+      </label>
+      <button type="submit" className={styles.addContactBtn}>
+        {textBtn}
+      </button>
+    </form>
+  );
 };
-class ContactForm extends Component {
-  static propTypes = {
-    INITIAL_STATE: PropTypes.shape({
-      name: PropTypes.string.isRequired,
-      number: PropTypes.string.isRequired,
-    }),
-    onSubmit: PropTypes.func,
-  };
-  state = { ...INITIAL_STATE };
-  handleChange = e => {
-    const { name, value } = e.currentTarget;
-    this.setState(prev => ({
-      ...prev,
-      [name]: value,
-    }));
-  };
-  handleSubmit = e => {
-    const { name } = this.state;
-    e.preventDefault();
-    if (
-      this.props.contacts
-        .map(item => item.name.toLowerCase())
-        .includes(name.toLowerCase())
-    ) {
-      alert(`${name} is already in contacts`);
-      return;
-    }
-    this.props.onSubmit(this.state);
-    this.reset();
-  };
-  reset = () => {
-    this.setState({ ...INITIAL_STATE });
-  };
-  render() {
-    const { name, number } = this.state;
-    return (
-      <form onSubmit={this.handleSubmit} className={styles.contactForm}>
-        <h2 className={styles.title}>Дані контакту: </h2>
-        <label className={styles.label}>
-          Ім'я
-          <input
-            className={styles.input}
-            type="text"
-            name="name"
-            value={name}
-            placeholder="введіть ім'я"
-            pattern="^[a-zA-Zа-яА-Я]+(([' -][a-zA-Zа-яА-Я ])?[a-zA-Zа-яА-Я]*)*$"
-            title="Имя может состоять только из букв, апострофа, тире и пробелов. Например Adrian, Jacob Mercer, Charles de Batz de Castelmore d'Artagnan и т. п."
-            required
-            onChange={this.handleChange}
-          />
-        </label>
-        <label className={styles.label}>
-          Номер телефону
-          <input
-            className={styles.input}
-            type="tel"
-            name="number"
-            placeholder="XXX-XX-XX"
-            value={number}
-            pattern="\+?\d{1,4}?[-.\s]?\(?\d{1,3}?\)?[-.\s]?\d{1,4}[-.\s]?\d{1,4}[-.\s]?\d{1,9}"
-            title="Номер телефона должен состоять цифр и может содержать пробелы, тире, круглые скобки и может начинаться с +"
-            required
-            onChange={this.handleChange}
-          />
-        </label>
-        <button type="submit" className={styles.addContactBtn}>
-          Додати контакт
-        </button>
-      </form>
-    );
-  }
-}
-const mapStateToPrope = state => ({
-  contacts: contactsSelectors.getContacts(state),
-});
 
-const mapDispatchToProps = dispatch => ({
-  onSubmit: ({ name, number }) =>
-    dispatch(contactsOperations.addContact({ name, number })),
-});
-
-export default connect(mapStateToPrope, mapDispatchToProps)(ContactForm);
+ContactForm.propTypes = {
+  name: PropTypes.string,
+  number: PropTypes.string,
+  onSubmit: PropTypes.func,
+  onChange: PropTypes.func,
+  textBtn: PropTypes.string,
+};
+export default ContactForm;

@@ -16,7 +16,7 @@ ContactList.propTypes = {
   onDelete: PropTypes.func,
 };
 const mapStateToProps = state => ({
-  contacts: contactsSelectors.getVisibleContacts(state),
+  contacts: contactsSelectors.getSortContacts(state),
 });
 
 export default connect(mapStateToProps)(ContactList);
