@@ -15,7 +15,7 @@ html {
 
 body {
   margin: 0;
-  padding-top: 80px;
+  padding-top: 70px;
   font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto,
     Oxygen-Sans, Ubuntu, Cantarell, 'Helvetica Neue', sans-serif;
   color: var(--main-color);
@@ -28,7 +28,15 @@ body {
   margin-bottom: 20px;
   color: var(--active-color);
 }
-
+.img {
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+}
+.addBtnImg {
+  fill: var(--second-color);
+  margin-left: 10px;
+}
 .header__link {
   color: var(--second-color);
   text-decoration: none;
@@ -54,15 +62,33 @@ body {
   display: flex;
 }
 .container-page {
-  padding-top: 15px;
   & > .title {
     text-align: center;
   }
+}
+.container-page__home {
+  position: fixed;
+  height: 100vh;
+  width: 100vw;
+  background: url('./images/book-159880.png') no-repeat fixed;
+  background-position-y: 80px;
+  background-size: contain;
+}
+.container-page__contacts {
+  background: url('./images//fon.jpg') no-repeat;
+  background-size: cover;
+}
+.contacts-count {
+  margin-bottom: 30px;
+}
+.contacts-count__value {
+  color: var(--active-color);
 }
 .form {
   width: 320px;
 }
 .contacts-operations {
+  margin-left: 60px;
   width: 300px;
   height: 100vh;
   border-right: 1px dotted var(--active-color);

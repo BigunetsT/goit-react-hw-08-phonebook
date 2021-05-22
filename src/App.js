@@ -1,7 +1,6 @@
 import React, { Component, lazy, Suspense } from 'react';
 import { Switch } from 'react-router-dom';
 import AppBar from './components/AppBar';
-import Container from './components/Container';
 import routes from './routes';
 import { authOperations } from './redux/auth';
 import { connect } from 'react-redux';
@@ -28,31 +27,29 @@ class App extends Component {
   render() {
     return (
       <>
-        <Container>
-          <AppBar />
-          <Suspense fallback={<h1>Завантаження...</h1>}>
-            <Switch>
-              <PublicRoute exact path={routes.home} component={HomePage} />
-              <PublicRoute
-                path={routes.login}
-                restricted
-                redirectTo={routes.contacts}
-                component={LoginPage}
-              />
-              <PublicRoute
-                path={routes.register}
-                restricted
-                redirectTo={routes.contacts}
-                component={RegisterPage}
-              />
-              <PrivateRoute
-                path={routes.contacts}
-                redirectTo={routes.login}
-                component={ContactsPage}
-              />
-            </Switch>
-          </Suspense>
-        </Container>
+        <AppBar />
+        <Suspense fallback={<h1>Завантаження...</h1>}>
+          <Switch>
+            <PublicRoute exact path={routes.home} component={HomePage} />
+            <PublicRoute
+              path={routes.login}
+              restricted
+              redirectTo={routes.contacts}
+              component={LoginPage}
+            />
+            <PublicRoute
+              path={routes.register}
+              restricted
+              redirectTo={routes.contacts}
+              component={RegisterPage}
+            />
+            <PrivateRoute
+              path={routes.contacts}
+              redirectTo={routes.login}
+              component={ContactsPage}
+            />
+          </Switch>
+        </Suspense>
       </>
     );
   }
