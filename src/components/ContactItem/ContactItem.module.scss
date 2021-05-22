@@ -14,6 +14,9 @@
     margin-bottom: 10px;
   }
 }
+.img {
+  margin-right: 10px;
+}
 .name {
   font-weight: bold;
 }
@@ -32,6 +35,9 @@
   cursor: pointer;
   &:hover {
     color: var(--active-color);
+    & > svg {
+      fill: var(--active-color);
+    }
   }
   &:not(:last-child) {
     margin-right: 10px;
@@ -65,5 +71,11 @@
     width: 80px;
     height: 80px;
     opacity: 0;
+  }
+}
+.svg {
+  margin-left: 10px;
+  &:hover {
+    fill: var(--active-color);
   }
 }

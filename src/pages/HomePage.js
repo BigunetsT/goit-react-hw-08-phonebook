@@ -4,7 +4,7 @@ import '../styles.scss';
 
 const HomePage = props => {
   return (
-    <div className="container-page">
+    <div className="container-page container-page__home">
       <h1 className="title">Телефонна книга</h1>
     </div>
   );
