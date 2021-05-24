@@ -23,7 +23,10 @@ body {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
-
+.spinner {
+  margin-left: 30px;
+  margin-top: 30px;
+}
 .title {
   margin-bottom: 20px;
   color: var(--active-color);
@@ -32,6 +35,12 @@ body {
   display: block;
   margin-left: auto;
   margin-right: auto;
+}
+.logo {
+  margin-right: 20px;
+  &:hover .logo-phone {
+    fill: var(--active-color);
+  }
 }
 .addBtnImg {
   fill: var(--second-color);
@@ -61,14 +70,26 @@ body {
 .contacts {
   display: flex;
 }
+.contacts-info {
+  width: 1200px;
+}
+.pagination {
+  justify-content: center;
+}
+.footer {
+  padding-top: 50px;
+  padding-bottom: 50px;
+  text-align: center;
+  font-weight: bold;
+}
 .container-page {
+  height: 100%;
+  width: 100%;
   & > .title {
     text-align: center;
   }
   &.container-page__home {
     position: fixed;
-    height: 100vh;
-    width: 100vw;
     background: url('./images/book-159880.png') no-repeat fixed;
     background-position-y: 80px;
     background-size: contain;
@@ -91,7 +112,6 @@ body {
 .contacts-operations {
   margin-left: 60px;
   width: 300px;
-  height: 100vh;
   border-right: 1px dotted var(--active-color);
 }
 .label {

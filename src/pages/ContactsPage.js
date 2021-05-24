@@ -66,8 +66,12 @@ class ContactsPage extends Component {
             )}
             <Filter />
           </div>
-          <ContactList className="contacts-list" />
+          <div className="contacts-info">
+            <ContactList className="contacts-list" />
+            {/* <div className="pagination">Pagination</div> */}
+          </div>
         </div>
+        <div className="footer">GoIt-2021 React#27</div>
       </div>
     );
   }

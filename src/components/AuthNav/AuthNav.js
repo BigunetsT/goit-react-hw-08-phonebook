@@ -3,7 +3,7 @@ import { NavLink } from 'react-router-dom';
 import routes from '../../routes';
 import '../../styles.scss';
 
-const AuthNav = props => {
+const AuthNav = () => {
   return (
     <nav>
       <NavLink
