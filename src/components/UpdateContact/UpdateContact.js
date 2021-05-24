@@ -27,14 +27,16 @@ class UpdateContact extends Component {
     }));
   };
   handleSubmit = e => {
-    const { name } = this.state;
+    const { name, number } = this.state;
+    const { contacts } = this.props;
     e.preventDefault();
     if (
-      this.props.contacts
+      contacts
         .map(item => item.name.toLowerCase())
-        .includes(name.toLowerCase())
+        .includes(name.toLowerCase()) &&
+      contacts.map(item => item.number).includes(number)
     ) {
-      alert(`${name} is already in contacts`);
+      alert('This contact is already in list');
       return;
     }
     this.props.onSubmit(this.state);

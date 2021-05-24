@@ -69,7 +69,7 @@ class RegisterPage extends Component {
             />
           </label>
 
-          <button type="submit" className="btn">
+          <button type="submit" className="formBtn">
             Зареєструватися
           </button>
         </form>

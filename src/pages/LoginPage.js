@@ -56,7 +56,7 @@ class LoginPage extends Component {
             />
           </label>
 
-          <button type="submit" className="btn">
+          <button type="submit" className="formBtn">
             Ввійти
           </button>
         </form>
