@@ -8,7 +8,7 @@ import { authSelectors } from '../redux/auth';
 
 const Navigation = ({ isAuthenticated }) => {
   return (
-    <nav>
+    <nav className="nav">
       <Link to={routes.home}>
         <svg
           className="logo"
