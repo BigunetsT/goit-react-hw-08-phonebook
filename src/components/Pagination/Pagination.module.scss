@@ -1,0 +1,10 @@
+.pagination {
+  display: flex;
+  justify-content: center;
+}
+.paginationBtn {
+  padding: 0 10px;
+  &:not(:last-child) {
+    margin-right: 20px;
+  }
+}
