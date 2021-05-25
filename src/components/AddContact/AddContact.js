@@ -4,16 +4,21 @@ import ContactForm from '../ContactForm';
 import { connect } from 'react-redux';
 import { contactsOperations } from '../../redux/contacts';
 import { contactsSelectors } from '../../redux/contacts';
+import Notification from '../Notification';
+import { CSSTransition } from 'react-transition-group';
+import notification from '../Notification/transitions/notification.module.css';
 
 const INITIAL_STATE = {
   name: '',
   number: '',
+  message: null,
 };
 class AddContact extends Component {
   static propTypes = {
     INITIAL_STATE: PropTypes.shape({
       name: PropTypes.string.isRequired,
       number: PropTypes.string.isRequired,
+      message: PropTypes.string,
     }),
     onSubmit: PropTypes.func,
   };
@@ -33,7 +38,12 @@ class AddContact extends Component {
         .map(item => item.name.toLowerCase())
         .includes(name.toLowerCase())
     ) {
-      alert(`${name} is already in contacts`);
+      this.setState({
+        message: `${name} is already in contacts`,
+      });
+      setTimeout(() => {
+        this.setState(() => ({ message: null }));
+      }, 2000);
       return;
     }
     this.props.onSubmit(this.state);
@@ -43,15 +53,26 @@ class AddContact extends Component {
     this.setState({ ...INITIAL_STATE });
   };
   render() {
-    const { name, number } = this.state;
+    const { name, number, message } = this.state;
     return (
-      <ContactForm
-        onSubmit={this.handleSubmit}
-        onChange={this.handleChange}
-        name={name}
-        number={number}
-        textBtn="Додати контакт"
-      />
+      <>
+        <CSSTransition
+          in={Boolean(message)}
+          timeout={250}
+          classNames={notification}
+          unmountOnExit
+        >
+          <Notification message={message} />
+        </CSSTransition>
+
+        <ContactForm
+          onSubmit={this.handleSubmit}
+          onChange={this.handleChange}
+          name={name}
+          number={number}
+          textBtn="Додати контакт"
+        />
+      </>
     );
   }
 }

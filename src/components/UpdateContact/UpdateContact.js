@@ -4,12 +4,16 @@ import ContactForm from '../ContactForm';
 import { connect } from 'react-redux';
 import { contactsOperations } from '../../redux/contacts';
 import { contactsSelectors } from '../../redux/contacts';
+import Notification from '../Notification';
+import { CSSTransition } from 'react-transition-group';
+import notification from '../Notification/transitions/notification.module.css';
 
 class UpdateContact extends Component {
   static propTypes = {
     INITIAL_STATE: PropTypes.shape({
       name: PropTypes.string.isRequired,
       number: PropTypes.string.isRequired,
+      message: PropTypes.string,
     }),
     onSubmit: PropTypes.func,
   };
@@ -17,6 +21,7 @@ class UpdateContact extends Component {
     name: this.props.name,
     number: this.props.number,
     id: this.props.id,
+    message: null,
   };
 
   handleChange = e => {
@@ -36,22 +41,38 @@ class UpdateContact extends Component {
         .includes(name.toLowerCase()) &&
       contacts.map(item => item.number).includes(number)
     ) {
-      alert('This contact is already in list');
+      this.setState({
+        message: 'This contact is already in list',
+      });
+      setTimeout(() => {
+        this.setState(() => ({ message: null }));
+      }, 2000);
       return;
     }
     this.props.onSubmit(this.state);
   };
 
   render() {
-    const { name, number } = this.state;
+    const { name, number, message } = this.state;
     return (
-      <ContactForm
-        onSubmit={this.handleSubmit}
-        onChange={this.handleChange}
-        name={name}
-        number={number}
-        textBtn="Зберегти зміни"
-      />
+      <>
+        <CSSTransition
+          in={Boolean(message)}
+          timeout={250}
+          classNames={notification}
+          unmountOnExit
+        >
+          <Notification message={message} />
+        </CSSTransition>
+
+        <ContactForm
+          onSubmit={this.handleSubmit}
+          onChange={this.handleChange}
+          name={name}
+          number={number}
+          textBtn="Зберегти зміни"
+        />
+      </>
     );
   }
 }

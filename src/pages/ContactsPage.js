@@ -1,12 +1,14 @@
 import React, { Component } from 'react';
-import AddContact from '../components/AddContact';
+import { connect } from 'react-redux';
+import { CSSTransition } from 'react-transition-group';
 import { Button } from 'react-bootstrap';
+import AddContact from '../components/AddContact';
 import Modal from '../components/Modal';
 import Filter from '../components/Filter';
 import ContactList from '../components/ContactList';
-import { connect } from 'react-redux';
 import { contactsOperations } from '../redux/contacts';
 import { contactsSelectors } from '../redux/contacts';
+import popTransition from '../components/ContactList/transitions/pop.module.css';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import '../styles.scss';
 
@@ -24,6 +26,8 @@ class ContactsPage extends Component {
     this.props.fetchContacts();
   }
   render() {
+    const { contactsCount } = this.props;
+    const { showModal } = this.state;
     return (
       <div className="container-page container-page__contacts">
         <h1 className="title">Контакти</h1>
@@ -31,9 +35,7 @@ class ContactsPage extends Component {
           <div className="contacts-operations">
             <h3 className="contacts-count">
               Всього контактів:{' '}
-              <span className="contacts-count__value">
-                {this.props.contactsCount}
-              </span>
+              <span className="contacts-count__value">{contactsCount}</span>
             </h3>
             <Button
               variant="secondary"
@@ -59,12 +61,19 @@ class ContactsPage extends Component {
                 <path d="m20.5 18h-6c-.276 0-.5-.224-.5-.5s.224-.5.5-.5h6c.276 0 .5.224.5.5s-.224.5-.5.5z" />
               </svg>
             </Button>
-            {this.state.showModal && (
+            {showModal && (
               <Modal onClose={this.closeModal}>
                 <AddContact />
               </Modal>
             )}
-            <Filter />
+            <CSSTransition
+              in={Number(contactsCount) > 1}
+              timeout={250}
+              classNames={popTransition}
+              unmountOnExit
+            >
+              <Filter />
+            </CSSTransition>
           </div>
           <div className="contacts-info">
             <ContactList className="contacts-list" />
