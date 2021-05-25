@@ -1,0 +1,80 @@
+:root {
+  --main-color: #192f4f;
+  --second-color: white;
+  --active-color: #d2180c;
+  --main-border-color: #c7c7c7;
+  --second-border-color: #6c757d;
+  --background-color: pink;
+}
+
+.contactForm {
+  width: 400px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  border: 2px solid var(--second-border-color);
+  background-color: var(--second-color);
+  padding: 10px;
+  max-width: 100%;
+  margin-bottom: 30px;
+}
+
+.title {
+  text-align: center;
+  margin-bottom: 30px;
+  color: var(--active-color);
+}
+
+.label {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  margin-bottom: 20px;
+  font-size: 20px;
+  font-weight: bold;
+}
+
+.input {
+  display: inline-block;
+  margin-top: 10px;
+  padding: 2px 5px;
+  max-width: 250px;
+  border: none;
+  outline: none;
+  border: 1px solid var(--main-border-color);
+  border-radius: 5px;
+}
+
+.input:focus {
+  border: 3px solid var(--active-color);
+  -webkit-box-shadow: 0 0 2px 0 var(--active-color) inset, 0 0 2px 2px var(--active-color);
+          box-shadow: 0 0 2px 0 var(--active-color) inset, 0 0 2px 2px var(--active-color);
+}
+
+.addContactBtn {
+  display: block;
+  width: 150px;
+  border-radius: 5px;
+  padding: 5px;
+  border: 1px solid var(--main-border-color);
+  cursor: pointer;
+  color: var(--second-color);
+  background-color: var(--active-color);
+  font-weight: bold;
+  -webkit-transition: all 150ms ease-in-out;
+  transition: all 150ms ease-in-out;
+}
+
+.addContactBtn:hover {
+  -webkit-box-shadow: 0 0 5px 0 var(--active-color) inset, 0 0 5px 4px var(--active-color);
+          box-shadow: 0 0 5px 0 var(--active-color) inset, 0 0 5px 4px var(--active-color);
+}
+/*# sourceMappingURL=ContactForm.module.css.map */

@@ -1,0 +1,48 @@
+:root {
+  --main-color: #192f4f;
+  --second-color: white;
+  --active-color: #d2180c;
+  --main-border-color: #c7c7c7;
+  --second-border-color: #6c757d;
+  --background-color: pink;
+}
+
+.filter {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  max-width: 100%;
+}
+
+.label {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  font-size: 20px;
+  font-weight: bold;
+  margin-bottom: 0;
+}
+
+.input {
+  display: inline-block;
+  padding: 2px 5px;
+  max-width: 250px;
+  outline: none;
+  border: 1px solid var(--main-border-color);
+  border-radius: 5px;
+}
+
+.input:focus {
+  border: 3px solid var(--second-border-color);
+  -webkit-box-shadow: 0 0 3px 0 var(--second-border-color) inset, 0 0 3px 3px var(--second-border-color);
+          box-shadow: 0 0 3px 0 var(--second-border-color) inset, 0 0 3px 3px var(--second-border-color);
+}
+/*# sourceMappingURL=Filter.module.css.map */

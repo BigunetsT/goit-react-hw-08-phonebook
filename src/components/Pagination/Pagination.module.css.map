@@ -1,0 +1,9 @@
+{
+    "version": 3,
+    "mappings": "AAAA,AAAA,WAAW,CAAC;EACV,OAAO,EAAE,IAAI;EACb,eAAe,EAAE,MAAM;CACxB;;AACD,AAAA,cAAc,CAAC;EACb,OAAO,EAAE,MAAM;CAIhB;;AALD,AAEE,cAFY,AAEX,IAAK,CAAA,WAAW,EAAE;EACjB,YAAY,EAAE,IAAI;CACnB",
+    "sources": [
+        "Pagination.module.scss"
+    ],
+    "names": [],
+    "file": "Pagination.module.css"
+}
