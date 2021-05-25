@@ -12,22 +12,56 @@ import popTransition from '../components/ContactList/transitions/pop.module.css'
 import 'bootstrap/dist/css/bootstrap.min.css';
 import '../styles.scss';
 
+const countVisibleContacts = 20;
+
 class ContactsPage extends Component {
   state = {
     showModal: false,
+    currentIndex: 20,
+    visibleContacts: this.props.contacts.slice(
+      0,
+      Number(`${countVisibleContacts}`),
+    ),
   };
   openModal = () => {
-    this.setState({ showModal: true });
+    this.setState({
+      ...this.state,
+      showModal: true,
+    });
   };
   closeModal = () => {
-    this.setState({ showModal: false });
+    this.setState({ ...this.state, showModal: false });
+  };
+  prevContacts = () => {
+    const { currentIndex } = this.state;
+    console.log(currentIndex);
+    this.setState(prevState => ({
+      ...this.state,
+      visibleContacts: this.props.contacts.slice(
+        currentIndex - 2 * Number(`${countVisibleContacts}`),
+        currentIndex - Number(`${countVisibleContacts}`),
+      ),
+      currentIndex: prevState.currentIndex - Number(`${countVisibleContacts}`),
+    }));
+  };
+  nextContacts = () => {
+    const { currentIndex } = this.state;
+    console.log(currentIndex, 'next');
+    this.setState(prevState => ({
+      ...this.state,
+      visibleContacts: this.props.contacts.slice(
+        currentIndex,
+        currentIndex + Number(`${countVisibleContacts}`),
+      ),
+      currentIndex: prevState.currentIndex + Number(`${countVisibleContacts}`),
+    }));
   };
   componentDidMount() {
     this.props.fetchContacts();
   }
   render() {
     const { contactsCount } = this.props;
-    const { showModal } = this.state;
+    const { showModal, visibleContacts, currentIndex } = this.state;
     return (
       <div className="container__page container__page-contacts">
         <h1 className="title">Контакти</h1>
@@ -77,8 +111,26 @@ class ContactsPage extends Component {
             </CSSTransition>
           </div>
           <div className="contacts__info">
-            <ContactList className="contact__list" />
-            {/* <div className="pagination">Pagination</div> */}
+            <ContactList contacts={visibleContacts} className="contact__list" />
+            <div className="pagination">
+              {currentIndex > `${countVisibleContacts}` && (
+                <button
+                  type="button"
+                  className="pagination-btn"
+                  onClick={this.prevContacts}
+                >
+                  Prev
+                </button>
+              )}
+
+              <button
+                type="button"
+                className="pagination-btn"
+                onClick={this.nextContacts}
+              >
+                Next
+              </button>
+            </div>
           </div>
         </div>
         <div className="footer">GoIt-2021 React#27</div>
@@ -88,6 +140,7 @@ class ContactsPage extends Component {
 }
 const mapStateToProps = state => ({
   contactsCount: contactsSelectors.getContactsCount(state),
+  contacts: contactsSelectors.getSortContacts(state),
 });
 const mapDispatchToProps = dispatch => ({
   fetchContacts: () => dispatch(contactsOperations.fetchContacts()),
