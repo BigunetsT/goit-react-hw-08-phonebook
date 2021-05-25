@@ -23,32 +23,17 @@ body {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
-.nav {
-  display: flex;
-  align-items: center;
-}
-.spinner {
-  margin-left: 30px;
-  margin-top: 30px;
-}
-.title {
-  margin-bottom: 20px;
-  color: var(--active-color);
-}
-.img {
-  display: block;
-  margin-left: auto;
-  margin-right: auto;
-}
+
+//Стилі хедеру
 .logo {
   margin-right: 20px;
   &:hover .logo-phone {
     fill: var(--active-color);
   }
 }
-.contacts__addBtnImg {
-  fill: var(--second-color);
-  margin-left: 10px;
+.nav {
+  display: flex;
+  align-items: center;
 }
 .header__link {
   color: var(--second-color);
@@ -65,26 +50,19 @@ body {
 .header__link-active {
   color: var(--active-color);
 }
-.wrapper {
-  width: 400px;
+//Загальні стилі сторінок
+.spinner {
+  margin-left: 30px;
+  margin-top: 30px;
+}
+.title {
+  margin-bottom: 20px;
+  color: var(--active-color);
+}
+.img {
+  display: block;
   margin-left: auto;
   margin-right: auto;
-  padding-top: 20px;
-}
-.contacts {
-  display: flex;
-}
-.contacts__info {
-  width: 1200px;
-}
-.pagination {
-  justify-content: center;
-}
-.footer {
-  padding-top: 50px;
-  padding-bottom: 50px;
-  text-align: center;
-  font-weight: bold;
 }
 .container__page {
   padding-top: 20px;
@@ -105,44 +83,48 @@ body {
   }
 }
 
-.contacts__count {
-  margin-bottom: 30px;
+//Стилі операцій контактів
+.contacts__addBtnImg {
+  fill: var(--second-color);
+  margin-left: 10px;
 }
-.contacts__count-value {
-  color: var(--active-color);
+//Стилі сторінок логін та реєстрація
+.wrapper {
+  width: 400px;
+  margin-left: auto;
+  margin-right: auto;
+  padding-top: 20px;
 }
 .form {
   width: 320px;
-}
-.contacts__operations {
-  margin-left: 60px;
-  width: 300px;
-  border-right: 1px dotted var(--active-color);
-}
-.label {
   display: flex;
   flex-direction: column;
-  margin-bottom: 15px;
-  font-size: 16px;
 }
-.input {
-  margin-top: 5px;
-  padding: 2px 5px;
-  border: none;
-  outline: none;
-  border: 1px solid var(--main-border-color);
-  border-radius: 5px;
-  &:focus {
-    border: 3px solid var(--second-border-color);
-    box-shadow: 0 0 3px 0 var(--second-border-color) inset,
-      0 0 3px 3px var(--second-border-color);
-  }
-}
+// .label {
+//   display: flex;
+//   flex-direction: column;
+//   margin-bottom: 15px;
+//   font-size: 16px;
+// }
+// .input {
+//   margin-top: 5px;
+//   padding: 10px;
+//   border: none;
+//   outline: none;
+//   border: 1px solid var(--main-border-color);
+//   border-radius: 5px;
+//   &:focus {
+//     border: 3px solid var(--second-border-color);
+//     box-shadow: 0 0 3px 0 var(--second-border-color) inset,
+//       0 0 3px 3px var(--second-border-color);
+//   }
+// }
 .formBtn {
+  width: 150px;
   color: var(--second-color);
   background-color: var(--active-color);
   border-radius: 5px;
-  padding: 5px 10px;
+  padding: 10px;
   border: 1px solid var(--main-border-color);
   cursor: pointer;
   font-weight: bold;
@@ -152,10 +134,47 @@ body {
       0 0 5px 4px var(--active-color);
   }
 }
+.MuiInputBase-root {
+  margin-bottom: 20px;
+}
+.MuiFormControl-root {
+  flex-direction: column;
+}
+//Стилі списку контактів
+.contacts {
+  display: flex;
+}
+.contacts__info {
+  max-width: 1200px;
+  min-height: 500px;
+}
+
+.contacts__count {
+  margin-bottom: 30px;
+}
+.contacts__count-value {
+  margin-left: 10px;
+  color: var(--active-color);
+}
+.contacts__operations {
+  margin-left: 60px;
+  width: 300px;
+  border-right: 1px dotted var(--active-color);
+}
+
 .addBtn {
   margin-bottom: 30px;
   &:hover {
     box-shadow: 0 0 5px 0 var(--second-border-color) inset,
       0 0 5px 4px var(--second-border-color);
   }
+}
+.pagination {
+  justify-content: center;
+}
+.footer {
+  padding-top: 50px;
+  padding-bottom: 50px;
+  text-align: center;
+  font-weight: bold;
 }

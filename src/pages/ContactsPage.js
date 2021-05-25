@@ -34,8 +34,9 @@ class ContactsPage extends Component {
         <div className="contacts">
           <div className="contacts__operations">
             <h3 className="contacts__count">
-              Всього контактів:{' '}
-              <span className="contacts__count-value">{contactsCount}</span>
+              {contactsCount
+                ? `Всього контактів: ${contactsCount}`
+                : 'У Вас ще немає контактів'}
             </h3>
             <Button
               variant="secondary"

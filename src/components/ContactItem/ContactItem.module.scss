@@ -4,18 +4,17 @@
   margin-left: 10px;
 }
 .contactItem {
+  margin-left: 30px;
+  margin-bottom: 10px;
   page-break-inside: avoid;
   break-inside: avoid;
-  max-width: 450px;
-  min-width: 320px;
+  width: 450px;
+  // min-width: 320px;
   display: flex;
   justify-content: space-between;
   padding: 10px 5px;
   box-shadow: 0px 1px 3px 0px rgba(0, 0, 0, 0.2),
     0px 1px 1px 0px rgba(0, 0, 0, 0.14), 0px 2px 1px -1px rgba(0, 0, 0, 0.12);
-  & + .contactItem {
-    margin-top: 10px;
-  }
 }
 .img {
   margin-right: 10px;
