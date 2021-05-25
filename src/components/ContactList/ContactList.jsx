@@ -1,10 +1,10 @@
-import styles from './ContactList.module.scss';
-import ContactItem from '../ContactItem';
-import { TransitionGroup, CSSTransition } from 'react-transition-group';
-import popTransition from './transitions/pop.module.css';
-import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
+import { TransitionGroup, CSSTransition } from 'react-transition-group';
+import PropTypes from 'prop-types';
+import popTransition from './transitions/pop.module.css';
+import ContactItem from '../ContactItem';
 import { contactsSelectors } from '../../redux/contacts';
+import styles from './ContactList.module.scss';
 
 const ContactList = ({ contacts }) => (
   <TransitionGroup component="ul" className={styles.contactsList}>

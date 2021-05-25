@@ -29,13 +29,13 @@ class ContactsPage extends Component {
     const { contactsCount } = this.props;
     const { showModal } = this.state;
     return (
-      <div className="container-page container-page__contacts">
+      <div className="container__page container__page-contacts">
         <h1 className="title">Контакти</h1>
         <div className="contacts">
-          <div className="contacts-operations">
-            <h3 className="contacts-count">
+          <div className="contacts__operations">
+            <h3 className="contacts__count">
               Всього контактів:{' '}
-              <span className="contacts-count__value">{contactsCount}</span>
+              <span className="contacts__count-value">{contactsCount}</span>
             </h3>
             <Button
               variant="secondary"
@@ -44,7 +44,7 @@ class ContactsPage extends Component {
             >
               Додати контакт
               <svg
-                className="addBtnImg"
+                className="contacts__addBtnImg"
                 id="_x31__px"
                 enableBackground="new 0 0 24 24"
                 height="20"
@@ -75,8 +75,8 @@ class ContactsPage extends Component {
               <Filter />
             </CSSTransition>
           </div>
-          <div className="contacts-info">
-            <ContactList className="contacts-list" />
+          <div className="contacts__info">
+            <ContactList className="contact__list" />
             {/* <div className="pagination">Pagination</div> */}
           </div>
         </div>

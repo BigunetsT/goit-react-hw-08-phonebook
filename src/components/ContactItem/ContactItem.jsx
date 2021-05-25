@@ -1,10 +1,10 @@
 import React, { Component } from 'react';
+import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
-import styles from './ContactItem.module.scss';
 import Modal from '../Modal';
 import UpdateContact from '../UpdateContact';
-import { connect } from 'react-redux';
 import { contactsOperations } from '../../redux/contacts';
+import styles from './ContactItem.module.scss';
 
 class ContactItem extends Component {
   state = {
@@ -19,6 +19,7 @@ class ContactItem extends Component {
 
   render() {
     const { id, name, number, onDelete } = this.props;
+    const { showModal } = this.state;
     return (
       <li name={name} number={number} className={styles.contactItem}>
         <div className={styles.contactData}>
@@ -98,7 +99,7 @@ class ContactItem extends Component {
               <path d="m362.488281 7.578125c-9.769531-9.746094-25.585937-9.746094-35.355469 0l-10.605468 10.605469 47.089844 47.089844 10.605468-10.605469c9.75-9.769531 9.75-25.585938 0-35.355469zm0 0" />
             </svg>
           </button>
-          {this.state.showModal && (
+          {showModal && (
             <Modal onClose={this.closeModal}>
               <UpdateContact name={name} number={number} id={id} />
             </Modal>

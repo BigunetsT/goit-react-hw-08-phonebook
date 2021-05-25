@@ -1,8 +1,8 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import styles from './UserMenu.module.scss';
 import { connect } from 'react-redux';
 import { authSelectors, authOperations } from '../../redux/auth';
+import styles from './UserMenu.module.scss';
 
 const UserMenu = ({ email, onLogout }) => {
   return (

@@ -1,11 +1,11 @@
 import React, { Component } from 'react';
+import { connect } from 'react-redux';
+import { CSSTransition } from 'react-transition-group';
 import PropTypes from 'prop-types';
 import ContactForm from '../ContactForm';
-import { connect } from 'react-redux';
+import Notification from '../Notification';
 import { contactsOperations } from '../../redux/contacts';
 import { contactsSelectors } from '../../redux/contacts';
-import Notification from '../Notification';
-import { CSSTransition } from 'react-transition-group';
 import notification from '../Notification/transitions/notification.module.css';
 
 class UpdateContact extends Component {
@@ -39,7 +39,12 @@ class UpdateContact extends Component {
       contacts
         .map(item => item.name.toLowerCase())
         .includes(name.toLowerCase()) &&
-      contacts.map(item => item.number).includes(number)
+      contacts[
+        contacts
+          .map((item, index) => (item.name === name ? index : null))
+          .filter(item => item !== null)
+          .join('')
+      ].number === number
     ) {
       this.setState({
         message: 'This contact is already in list',

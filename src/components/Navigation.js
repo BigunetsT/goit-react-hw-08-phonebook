@@ -1,10 +1,10 @@
 import React from 'react';
 import { Link, NavLink } from 'react-router-dom';
+import { connect } from 'react-redux';
+import { authSelectors } from '../redux/auth';
 import PropTypes from 'prop-types';
 import routes from '../routes';
 import '../styles.scss';
-import { connect } from 'react-redux';
-import { authSelectors } from '../redux/auth';
 
 const Navigation = ({ isAuthenticated }) => {
   return (

@@ -11,7 +11,6 @@
   display: flex;
   justify-content: space-between;
   padding: 10px 5px;
-  // border-bottom: 1px dotted var(--main-border-color);
   box-shadow: 0px 1px 3px 0px rgba(0, 0, 0, 0.2),
     0px 1px 1px 0px rgba(0, 0, 0, 0.14), 0px 2px 1px -1px rgba(0, 0, 0, 0.12);
   & + .contactItem {
@@ -23,10 +22,6 @@
 }
 .name {
   font-weight: bold;
-}
-.contactData {
-}
-.contactOperations {
 }
 .contactBtn {
   position: relative;

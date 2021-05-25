@@ -46,7 +46,7 @@ body {
     fill: var(--active-color);
   }
 }
-.addBtnImg {
+.contacts__addBtnImg {
   fill: var(--second-color);
   margin-left: 10px;
 }
@@ -74,7 +74,7 @@ body {
 .contacts {
   display: flex;
 }
-.contacts-info {
+.contacts__info {
   width: 1200px;
 }
 .pagination {
@@ -86,35 +86,35 @@ body {
   text-align: center;
   font-weight: bold;
 }
-.container-page {
+.container__page {
   padding-top: 20px;
   height: 100%;
   width: 100%;
   & > .title {
     text-align: center;
   }
-  &.container-page__home {
+  &.container__page-home {
     position: fixed;
     background: url('./images/book-159880.png') no-repeat fixed;
     background-position-y: 80px;
     background-size: contain;
   }
-  &.container-page__contacts {
+  &.container__page-contacts {
     background: url('./images/fon.jpg') no-repeat;
     background-size: cover;
   }
 }
 
-.contacts-count {
+.contacts__count {
   margin-bottom: 30px;
 }
-.contacts-count__value {
+.contacts__count-value {
   color: var(--active-color);
 }
 .form {
   width: 320px;
 }
-.contacts-operations {
+.contacts__operations {
   margin-left: 60px;
   width: 300px;
   border-right: 1px dotted var(--active-color);

@@ -1,11 +1,11 @@
 import React, { Component } from 'react';
+import { connect } from 'react-redux';
+import { CSSTransition } from 'react-transition-group';
 import PropTypes from 'prop-types';
 import ContactForm from '../ContactForm';
-import { connect } from 'react-redux';
+import Notification from '../Notification';
 import { contactsOperations } from '../../redux/contacts';
 import { contactsSelectors } from '../../redux/contacts';
-import Notification from '../Notification';
-import { CSSTransition } from 'react-transition-group';
 import notification from '../Notification/transitions/notification.module.css';
 
 const INITIAL_STATE = {

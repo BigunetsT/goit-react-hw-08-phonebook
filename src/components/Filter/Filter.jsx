@@ -1,8 +1,8 @@
 import React from 'react';
-import PropTypes from 'prop-types';
-import styles from './Filter.module.scss';
 import { connect } from 'react-redux';
+import PropTypes from 'prop-types';
 import { contactsSelectors, changeFilter } from '../../redux/contacts';
+import styles from './Filter.module.scss';
 
 const Filter = ({ value, onChange }) => {
   return (
