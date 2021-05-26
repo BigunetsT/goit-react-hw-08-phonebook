@@ -100,25 +100,6 @@ body {
   display: flex;
   flex-direction: column;
 }
-// .label {
-//   display: flex;
-//   flex-direction: column;
-//   margin-bottom: 15px;
-//   font-size: 16px;
-// }
-// .input {
-//   margin-top: 5px;
-//   padding: 10px;
-//   border: none;
-//   outline: none;
-//   border: 1px solid var(--main-border-color);
-//   border-radius: 5px;
-//   &:focus {
-//     border: 3px solid var(--second-border-color);
-//     box-shadow: 0 0 3px 0 var(--second-border-color) inset,
-//       0 0 3px 3px var(--second-border-color);
-//   }
-// }
 .formBtn {
   width: 150px;
   color: var(--second-color);
@@ -181,6 +162,11 @@ body {
   padding: 0 10px;
   &:not(:last-child) {
     margin-right: 20px;
+  }
+  &:hover,
+  &:focus {
+    border-color: var(--active-color);
+    color: var(--active-color);
   }
 }
 
