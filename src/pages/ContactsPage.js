@@ -12,16 +12,13 @@ import popTransition from '../components/ContactList/transitions/pop.module.css'
 import 'bootstrap/dist/css/bootstrap.min.css';
 import '../styles.scss';
 
-const countVisibleContacts = 20;
+const countVisibleContacts = 26;
 
 class ContactsPage extends Component {
   state = {
     showModal: false,
-    currentIndex: 20,
-    visibleContacts: this.props.contacts.slice(
-      0,
-      Number(`${countVisibleContacts}`),
-    ),
+    firstIndex: 0,
+    secondIndex: Number(`${countVisibleContacts}`),
   };
   openModal = () => {
     this.setState({
@@ -32,36 +29,29 @@ class ContactsPage extends Component {
   closeModal = () => {
     this.setState({ ...this.state, showModal: false });
   };
-  prevContacts = () => {
-    const { currentIndex } = this.state;
-    console.log(currentIndex);
-    this.setState(prevState => ({
-      ...this.state,
-      visibleContacts: this.props.contacts.slice(
-        currentIndex - 2 * Number(`${countVisibleContacts}`),
-        currentIndex - Number(`${countVisibleContacts}`),
-      ),
-      currentIndex: prevState.currentIndex - Number(`${countVisibleContacts}`),
-    }));
-  };
-  nextContacts = () => {
-    const { currentIndex } = this.state;
-    console.log(currentIndex, 'next');
-    this.setState(prevState => ({
-      ...this.state,
-      visibleContacts: this.props.contacts.slice(
-        currentIndex,
-        currentIndex + Number(`${countVisibleContacts}`),
-      ),
-      currentIndex: prevState.currentIndex + Number(`${countVisibleContacts}`),
-    }));
-  };
+
   componentDidMount() {
     this.props.fetchContacts();
   }
+  prevContacts = () => {
+    this.setState(prevState => ({
+      ...this.state,
+      firstIndex: prevState.firstIndex - Number(`${countVisibleContacts}`),
+      secondIndex: prevState.secondIndex - Number(`${countVisibleContacts}`),
+    }));
+  };
+  nextContacts = () => {
+    this.setState(prevState => ({
+      ...this.state,
+      firstIndex: prevState.firstIndex + Number(`${countVisibleContacts}`),
+      secondIndex: prevState.secondIndex + Number(`${countVisibleContacts}`),
+    }));
+  };
   render() {
-    const { contactsCount } = this.props;
-    const { showModal, visibleContacts, currentIndex } = this.state;
+    const { contactsCount, contacts, filter } = this.props;
+    const { showModal, firstIndex, secondIndex } = this.state;
+    const showPrevBtn = secondIndex > `${countVisibleContacts}`;
+    const showNextBtn = contactsCount - secondIndex > 0;
     return (
       <div className="container__page container__page-contacts">
         <h1 className="title">Контакти</h1>
@@ -96,6 +86,7 @@ class ContactsPage extends Component {
                 <path d="m20.5 18h-6c-.276 0-.5-.224-.5-.5s.224-.5.5-.5h6c.276 0 .5.224.5.5s-.224.5-.5.5z" />
               </svg>
             </Button>
+
             {showModal && (
               <Modal onClose={this.closeModal}>
                 <AddContact />
@@ -111,25 +102,35 @@ class ContactsPage extends Component {
             </CSSTransition>
           </div>
           <div className="contacts__info">
-            <ContactList contacts={visibleContacts} className="contact__list" />
+            {filter && (
+              <ContactList
+                contacts={contacts.slice(0, Number(`${countVisibleContacts}`))}
+                className="contact__list"
+              />
+            )}
+            <ContactList
+              contacts={contacts.slice(firstIndex, secondIndex)}
+              className="contact__list"
+            />
             <div className="pagination">
-              {currentIndex > `${countVisibleContacts}` && (
+              {showPrevBtn && (
                 <button
                   type="button"
                   className="pagination-btn"
                   onClick={this.prevContacts}
                 >
-                  Prev
+                  Попередня сторінка
                 </button>
               )}
-
-              <button
-                type="button"
-                className="pagination-btn"
-                onClick={this.nextContacts}
-              >
-                Next
-              </button>
+              {showNextBtn && (
+                <button
+                  type="button"
+                  className="pagination-btn"
+                  onClick={this.nextContacts}
+                >
+                  Наступна сторінка
+                </button>
+              )}
             </div>
           </div>
         </div>
@@ -141,6 +142,7 @@ class ContactsPage extends Component {
 const mapStateToProps = state => ({
   contactsCount: contactsSelectors.getContactsCount(state),
   contacts: contactsSelectors.getSortContacts(state),
+  filter: contactsSelectors.getFilter(state),
 });
 const mapDispatchToProps = dispatch => ({
   fetchContacts: () => dispatch(contactsOperations.fetchContacts()),
