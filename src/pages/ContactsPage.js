@@ -39,6 +39,11 @@ class ContactsPage extends Component {
       firstIndex: prevState.firstIndex - Number(`${countVisibleContacts}`),
       secondIndex: prevState.secondIndex - Number(`${countVisibleContacts}`),
     }));
+    window.scrollTo({
+      top: 0,
+      left: 0,
+      behavior: 'smooth',
+    });
   };
   nextContacts = () => {
     this.setState(prevState => ({
@@ -46,6 +51,11 @@ class ContactsPage extends Component {
       firstIndex: prevState.firstIndex + Number(`${countVisibleContacts}`),
       secondIndex: prevState.secondIndex + Number(`${countVisibleContacts}`),
     }));
+    window.scrollTo({
+      top: 0,
+      left: 0,
+      behavior: 'smooth',
+    });
   };
   render() {
     const { contactsCount, contacts, filter } = this.props;
